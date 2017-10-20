@@ -1,6 +1,4 @@
-var posicao = new Array(40,40);
 inScreen = true;
-
 
 /*function preload() {
 	pac = loadImage("imagens/pacmandireita.png", "imagens/pacmanFECHADO.png");
@@ -8,27 +6,20 @@ inScreen = true;
 
 function setup() {
 
-	createCanvas(700, 280);
+	createCanvas(900, 460);
   background(0);
-  pac = createSprite(10, 10, 10 ,10);
-  pac.scale = 0.05;
-  var pacParado = pac.addAnimation("stoped", "imagens/pacmandireita.png");
-
-  pac.addAnimation("moving", "imagens/pacmandireita.png", "imagens/pacmanFECHADO.png");
+  pac = createSprite(40, 40, 10 ,10);
+  pac.scale = 0.03;
   
-
-  //pac.addAnimation("movingLeft", "imagens/pacmanesquerda.png", "imagens/pacmanFECHADO.png");
-  pac.addAnimation("stop", "imagens/pacmanesquerda.png");
+  pac.addAnimation("stopped", "imagens/pacmanHorizontal.png");
+  pac.addAnimation("movingH", "imagens/pacmanHorizontal.png", "imagens/pacmanFECHADO.png");
+  pac.addAnimation("movingV", "imagens/pacmanVertical.png", "imagens/pacmanFECHADO.png" );
 
 }
 
 function draw() {
   background(0);
-  
-   //imageMode(CENTER);
-  
-   creatPac();
-   //image(pac, posicao[0], posicao[1], 40 ,40);
+  creatPac();
   
   
    drawSprites();

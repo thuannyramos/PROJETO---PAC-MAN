@@ -1,9 +1,7 @@
 function creatPac(){
-	
 	//Movimentação lateral - Pac
-  
   if (keyIsDown(LEFT_ARROW)){
-		pac.changeAnimation("moving");
+		pac.changeAnimation("movingH");
 
 	  if(inScreen)
 		{
@@ -17,10 +15,10 @@ function creatPac(){
 		inScreen= true;
 	}	 
 	
-	pac.mirrorX(-1);
+	//pac.mirrorX(-1);
 }
-  else if (keyIsDown(RIGHT_ARROW)){
-		pac.changeAnimation("moving");
+ if (keyIsDown(RIGHT_ARROW)){
+		pac.changeAnimation("movingH");
 
 		if(inScreen){
 		pac.position.x +=5;
@@ -30,7 +28,7 @@ function creatPac(){
 		else {
 			pac.position.x = 40;
 			pac.mirrorX(-1);
-			inScreen= true;
+			inScreen = true;
 		}
   }
   
@@ -40,12 +38,12 @@ function creatPac(){
   
   //Movimentação vertical - Pac
 	
-  else if (keyIsDown(UP_ARROW)){
-		pac.changeAnimation("moving");
+   if (keyIsDown(UP_ARROW)){
+		pac.changeAnimation("movingV");
 		
     if(inScreen){
 			pac.position.y -= 5;
-			pac.mirrorY(-1);
+			pac.mirrorY(1);
 		}
     
     else{
@@ -55,23 +53,22 @@ function creatPac(){
 		}
 }
 
-  else if (keyIsDown(DOWN_ARROW)){
-		pac.changeAnimation("moving");
+   if (keyIsDown(DOWN_ARROW)){
+		pac.changeAnimation("movingV");
 		
 		if(inScreen)
 		{
-			pac.posicao.y +=5;
+			pac.position.y +=5;
 			pac.mirrorY(-1);
 		}
     
     else{
-		 pac.posicao.y = 40;
+		 pac.position.y = 40;
 		 pac.mirrorY(-1);
 		 inScreen= true;
+		}
 	}
-}
-
-pac.changeAnimation("stoped");
+ //else pac.changeAnimation("stopped");
 
 	}
 	
