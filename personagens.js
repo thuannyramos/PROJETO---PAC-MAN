@@ -1,58 +1,78 @@
-function creatPac(posicao){
+function creatPac(){
 	
 	//Movimentação lateral - Pac
   
   if (keyIsDown(LEFT_ARROW)){
-	  
+		pac.changeAnimation("moving");
+
 	  if(inScreen)
-		 posicao[0] -= 5;
+		{
+		pac.position.x  -= 5;
+		pac.mirrorX(-1);
+	}
 	  
 	  else {
-		 posicao[0] = 660;
-		 inScreen= true;
+		pac.position.x = 660;
+		pac.mirrorX(1);
+		inScreen= true;
 	}	 
+	
+	pac.mirrorX(-1);
 }
-  if (keyIsDown(RIGHT_ARROW)){
-		
-		if(inScreen)
-			posicao[0]+=5;
+  else if (keyIsDown(RIGHT_ARROW)){
+		pac.changeAnimation("moving");
+
+		if(inScreen){
+		pac.position.x +=5;
+		pac.mirrorX(1);
+	}
 		
 		else {
-			posicao[0]= 40;
+			pac.position.x = 40;
+			pac.mirrorX(-1);
 			inScreen= true;
 		}
   }
   
-  if(posicao[0] < 0 || posicao[0] > 700 || posicao[1] < 0 || posicao[1] > 280) {
+  if(	pac.position.x < 0 || 	pac.position.x > 700 || 	pac.position.y < 0 || 	pac.position.y > 280) {
 		inScreen = false;
   }
   
   //Movimentação vertical - Pac
 	
-  if (keyIsDown(UP_ARROW)){
-    
-    if(inScreen)
-		posicao[1]-=5;
+  else if (keyIsDown(UP_ARROW)){
+		pac.changeAnimation("moving");
+		
+    if(inScreen){
+			pac.position.y -= 5;
+			pac.mirrorY(-1);
+		}
     
     else{
-		 posicao[1] = 240;
-		 inScreen= true;
+			pac.position.y = 240;
+			pac.mirrorY(-1);
+		 	inScreen= true;
 		}
 }
 
-  if (keyIsDown(DOWN_ARROW)){
+  else if (keyIsDown(DOWN_ARROW)){
+		pac.changeAnimation("moving");
 		
 		if(inScreen)
-		posicao[1] +=5;
+		{
+			pac.posicao.y +=5;
+			pac.mirrorY(-1);
+		}
     
     else{
-		 posicao[1] = 40;
+		 pac.posicao.y = 40;
+		 pac.mirrorY(-1);
 		 inScreen= true;
 	}
 }
 
-	return posicao;
-	
+pac.changeAnimation("stoped");
+
 	}
 	
 	

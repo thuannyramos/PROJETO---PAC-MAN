@@ -2,27 +2,36 @@ var posicao = new Array(40,40);
 inScreen = true;
 
 
-function preload() {
-	pac = loadImage("imagens/pacmandireita.png");
-}
+/*function preload() {
+	pac = loadImage("imagens/pacmandireita.png", "imagens/pacmanFECHADO.png");
+}*/
 
 function setup() {
 
 	createCanvas(700, 280);
-	background(0);
+  background(0);
+  pac = createSprite(10, 10, 10 ,10);
+  pac.scale = 0.05;
+  var pacParado = pac.addAnimation("stoped", "imagens/pacmandireita.png");
+
+  pac.addAnimation("moving", "imagens/pacmandireita.png", "imagens/pacmanFECHADO.png");
+  
+
+  //pac.addAnimation("movingLeft", "imagens/pacmanesquerda.png", "imagens/pacmanFECHADO.png");
+  pac.addAnimation("stop", "imagens/pacmanesquerda.png");
 
 }
 
 function draw() {
   background(0);
   
-   imageMode(CENTER);
+   //imageMode(CENTER);
   
-   posicao = creatPac(posicao);
-   image(pac, posicao[0], posicao[1], 40 ,40);
+   creatPac();
+   //image(pac, posicao[0], posicao[1], 40 ,40);
   
   
-  
+   drawSprites();
   stroke(255,0,0);
   fill(255,0,0);
   rect(200, 20, 40, 40);
