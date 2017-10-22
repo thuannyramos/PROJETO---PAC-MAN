@@ -11,19 +11,17 @@ function creatPac(){
 	}
 	  
 	  else {
-		pac.position.x = 660;
-		if(inScreen){
-		pac.position.x +=5;
-		pac.mirrorX(1);
+		pac.position.x = 860;
 		pac.mirrorX(1);
 		inScreen= true;
 	}	 
 }
  if (keyIsDown(RIGHT_ARROW)){
 		pac.changeAnimation("movingH");
-
-	}
-		
+		if(inScreen){
+			pac.position.x +=5;
+			pac.mirrorX(1);
+		}
 		else {
 			pac.position.x = 40;
 			pac.mirrorX(-1);
@@ -31,7 +29,7 @@ function creatPac(){
 		}
   }
   
-  if(	pac.position.x < 0 || 	pac.position.x > 700 || 	pac.position.y < 0 || 	pac.position.y > 280) {
+  if(pac.position.x < 0 || pac.position.x > 900 || pac.position.y < 0 || pac.position.y > 460) {
 		inScreen = false;
   }
   
@@ -46,7 +44,7 @@ function creatPac(){
 		}
     
     else{
-			pac.position.y = 240;
+			pac.position.y = 440;
 			pac.mirrorY(-1);
 		 	inScreen= true;
 		}
