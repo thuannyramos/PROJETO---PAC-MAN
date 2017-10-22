@@ -12,6 +12,9 @@ function creatPac(){
 	  
 	  else {
 		pac.position.x = 660;
+		if(inScreen){
+		pac.position.x +=5;
+		pac.mirrorX(1);
 		pac.mirrorX(1);
 		inScreen= true;
 	}	 
@@ -19,9 +22,6 @@ function creatPac(){
  if (keyIsDown(RIGHT_ARROW)){
 		pac.changeAnimation("movingH");
 
-		if(inScreen){
-		pac.position.x +=5;
-		pac.mirrorX(1);
 	}
 		
 		else {

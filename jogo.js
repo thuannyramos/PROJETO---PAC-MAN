@@ -31,17 +31,17 @@ function draw() {
 
   imageMode(CENTER); 
 
-  posicaoFantasma = movFantasma(posicaoFantasma);
+  //posicaoFantasma = movFantasma(posicaoFantasma);
 
-  image(blinky, posicaoFantasma[0][0], posicaoFantasma[0][1], 40, 40);
+  /*image(blinky, posicaoFantasma[0][0], posicaoFantasma[0][1], 40, 40);
   image(inky,posicaoFantasma[1][0], posicaoFantasma[1][1], 40, 40);
   image(pinky, posicaoFantasma[2][0], posicaoFantasma[2][1], 40, 40);
-  image(clyde,posicaoFantasma[3][0], posicaoFantasma[3][1], 40, 40);
+  image(clyde,posicaoFantasma[3][0], posicaoFantasma[3][1], 40, 40);**/
 
-  /*image(blinky, 200, 30, 40, 40);
+  image(blinky, 200, 30, 40, 40);
   image(inky,250, 30, 40, 40);
   image(pinky, 300, 30, 40, 40);
-  image(clyde,350, 30, 40, 40);*/
+  image(clyde,350, 30, 40, 40);
 }
 
 
