@@ -68,11 +68,11 @@ function draw() {
 
   imageMode(CENTER); 
 
-  //posicaoFantasma = movFantasma(posicaoFantasma);
+  // posicaoFantasma = movFantasma(posicaoFantasma);
 
   for(i = 0; i < 4; i++) image(fantasma[i], posicaoFantasma[i][0], posicaoFantasma[i][1], 40, 40);
   
-  //matriz
+  // matriz
   for (i = 0; i < cenario.length; i++) {
 	  for (j = 0; j < cenario[0].length; j++) {
 		  if (cenario[i][j] == 'b') {
