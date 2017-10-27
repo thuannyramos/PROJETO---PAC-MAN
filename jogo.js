@@ -45,7 +45,6 @@ function colisao (cx, cy) {
 }
 
 function setup() {
-
   createCanvas(w, h);
   x = 100;
   y = 100;
@@ -79,7 +78,7 @@ function draw() {
 			fill (100, 100, 225); 
 			rect (j*bloco, i*bloco, bloco, bloco);
 		  }
-      }
+   }
   }
   
   // texto
@@ -103,7 +102,7 @@ function draw() {
   if (keyIsDown(RIGHT_ARROW)) {
 	  if (!colisao(x+4+bloco/2, y)){
 		  x = x+4;
-      }
+   }
   }
 }
 
