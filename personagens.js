@@ -14,7 +14,7 @@ function creatPac(){
 	  else {
 		pac.position.x = w - 40;
 		pac.mirrorX(1);
-		inScreen= true;
+		inScreen = true;
 	  }	
 	}  
 	colisaoComida(pac.position.x, pac.position.y);
@@ -55,7 +55,7 @@ function creatPac(){
       else{
 			pac.position.y = h - 40;
 			pac.mirrorY(-1);
-		 	inScreen= true;
+		 	inScreen = true;
 		}
 	}		
 	colisaoComida(pac.position.x, pac.position.y);
@@ -89,37 +89,66 @@ function creatPac(){
 			for(j = 0; j < 2; j++){
 			// posicao x 
 			if( j === 0) {
-				if ( pF[i][2] == esquerda )  
+
+				if ( pF[i][2] === esquerda )  { 
+				
+					if(!(colisaoFantasma(pF[i][0], pF[i][1])))
 					pF[i][j] -= 2;
-				if ( pF[i][2] == direita )  
+         else {
+					pF[i][2] = posFantAleatoria();
+				}
+				}
+				if ( pF[i][2] === direita )  { 
+					if(!(colisaoFantasma(pF[i][0], pF[i][1])))
 					pF[i][j] += 2;
-		    if(pF[i][j] >= 900) {
-				pF[i][j] = 10;
+         else {
+					pF[i][2] = posFantAleatoria();
+				 }
 			}
-			if(pF[i][j] <= 0) {
-				pF[i][j] = 890;
-			}
-		}
-		   // posicao y
-		  if (j===1) {
-			pF[i][j] -= 2;
-			if(pF[i][j] >= 460) {
-				pF[i][j] = 40;
-			}
-			if(pF[i][j] <= 0) {
-				pF[i][j] = 420;
-			}
-		   }
-		
 		}
 	}
-	return pF;
-}
+		   // posicao y
+		if (j === 1)  {
+				
+			if ( pF[i][2] === cima )  { 
+				
+					if(!(colisaoFantasma(pF[i][0], pF[i][1])))
+							pF[i][j] -= 2;
+								else {
+								pF[i][2] = posFantAleatoria();
+								}
+							}
 
+								if ( pF[i][2] === baixo )  { 
+									if(!(colisaoFantasma(pF[i][0], pF[i][1])))
+									pF[i][j] += 2;
+								 else {
+									pF[i][2] = posFantAleatoria();
+								 }
+							}
+						}
+		
+		}
+		return pF;
+	}
+
+
+		
+
+	function posFantAleatoria(){
+		pos = Math.floor((Math.random() * 3));
+		console.log(pos)
+		if ( pos === direita) return direita;
+		if ( pos === esquerda) return esquerda;
+		if ( pos === cima) return cima;
+		if ( pos === baixo) return baixo;
+ }
+	
+
+// Colisão pac-cenario
 function colisao (cx, cy) {
   colColuna = Math.floor (cx/bloco);
   colLinha = Math.floor (cy/bloco);
-  
   
   if (cenario [colLinha][colColuna] == 'b') {
 	  return true;
@@ -127,14 +156,27 @@ function colisao (cx, cy) {
   else {
 	  return false;
   } 
-  
 }
 
+//Colisão pac-comida
 function colisaoComida (cx, cy){
 	colColuna = Math.floor (cx/bloco);
    colLinha = Math.floor (cy/bloco);
 	if (cenario [colLinha][colColuna] == 'v') {
 	  cenario [colLinha][colColuna] = 'x';
 	 contadorPonto +=10;
+  } 
+}
+
+//Colisão Fantasma-cenário
+function colisaoFantasma(cx, cy){
+	colColuna = Math.floor (cx/bloco);
+  colLinha = Math.floor (cy/bloco);
+  
+  if (cenario [colLinha][colColuna] == 'b') {
+	  return true;
+  }
+  else {
+	  return false;
   } 
 }
