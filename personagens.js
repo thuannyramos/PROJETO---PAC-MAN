@@ -4,7 +4,7 @@ function creatPac(){
   if (keyIsDown(LEFT_ARROW)){
 		pac.changeAnimation("movingH");
 
-	if (!(colisao (pac.position.x-1-bloco/2, pac.position.y - 10) || colisao (pac.position.x-1-bloco/2, pac.position.y + 10))) {
+	if (!(colisao (pac.position.x-2-bloco/2, pac.position.y - 10) || colisao (pac.position.x-2-bloco/2, pac.position.y + 10))) {
 	  if(inScreen)
 		{
 		pac.position.x  -= 5;
@@ -161,11 +161,15 @@ function colisao (cx, cy) {
 //Colisão pac-comida
 function colisaoComida (cx, cy){
 	colColuna = Math.floor (cx/bloco);
-   colLinha = Math.floor (cy/bloco);
+  colLinha = Math.floor (cy/bloco);
 	if (cenario [colLinha][colColuna] == 'v') {
 	  cenario [colLinha][colColuna] = 'x';
-	 contadorPonto +=10;
-  } 
+	 	contadorPonto +=10;
+	} 
+	if (cenario [colLinha][colColuna] == 'k') {
+	  cenario [colLinha][colColuna] = 'x';
+	 	contadorPonto +=10;
+	} 
 }
 
 //Colisão Fantasma-cenário

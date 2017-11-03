@@ -20,8 +20,6 @@ function preload() {
 
 function setup() {
   createCanvas(w, h);
-  x = 100;
-  y = 100;
   background(0);
   pac = createSprite(45, 75, 10 , 10);
   pac.scale = 0.02;
@@ -40,7 +38,6 @@ function draw() {
   creatPac();
   drawSprites();
   
-
   imageMode(CENTER); 
 
   posicaoFantasma = movFantasma(posicaoFantasma);
@@ -54,21 +51,66 @@ function draw() {
 			fill (100, 100, 225); 
 			rect (j*bloco, i*bloco, bloco, bloco);
 		  }
-		  else if(i>=2 && i<16 && cenario[i][j] == 'v') {
+		  else if(i>=1 && i<16 && cenario[i][j] == 'v') {
 			fill (200, 150, 150);
 			ellipse (j*bloco+15, i*bloco+15, bloco-15, bloco-15);}
-	}
+		  if (cenario [i][j] == 'k') {
+			fill (225);
+			ellipse (j*bloco+15, i*bloco+15, 22, 22);
+		  }
+	  }
   }
   
   
   // texto
- 
-  
   textSize (20);
   fill (225);
   text ("Pontuação: " + contadorPonto, 20, 25);
   text ("Vidas: " + contadorVida, 430, 25);
   text ("Nível: " + contadorNivel, 780, 25);  
 
-  
+  // Mudança de fase
+  if (contadorNivel == 1) {
+      if (contadorPonto == 2350) {
+       contadorNivel++;
+       cenario = cenarioCriar(contadorNivel);
+       pac.position.x = 45;
+       pac.position.y = 75;
+      }
+    }
+    
+    if (contadorNivel == 2)	{
+      if (contadorPonto == 4660) {
+       contadorNivel++;
+       cenario = cenarioCriar(contadorNivel);
+       pac.position.x = 45;
+       pac.position.y = 75;
+      }
+    }  
+    
+    if (contadorNivel == 3)	{
+      if (contadorPonto == 6980) {
+       contadorNivel++;
+       cenario = cenarioCriar(contadorNivel);
+       pac.position.x = 45;
+       pac.position.y = 75;
+      }
+    }
+    
+    if (contadorNivel == 4)	{
+      if (contadorPonto == 9250) {
+        contadorNivel++;
+        cenario = cenarioCriar(contadorNivel);
+        pac.position.x = 45;
+        pac.position.y = 75;
+      }
+    }
+    
+    /*if (contadorNivel == 5)	
+    if (contadorPonto == 11540) {
+      contadorNivel++;
+      cenario = cenarioCriar(contadorNivel);
+      pac.position.x = 45;
+      pac.position.y = 75;
+    }*/ 
   }
