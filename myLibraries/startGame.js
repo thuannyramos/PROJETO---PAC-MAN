@@ -1,4 +1,5 @@
 function iniciarJogo(){
+    alert("Entrei");
     background(0);
     
     creatPac();
@@ -26,6 +27,8 @@ function iniciarJogo(){
         }
       }
     }
+
+    cabecalho();
   }
     
      function cabecalho(){

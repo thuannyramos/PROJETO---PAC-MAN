@@ -42,7 +42,7 @@ function draw() {
   }
 
   
-
+/*
      function life(){
       if (contadorNivel == 1) { //2350
         if (contadorPonto == 50) {
@@ -86,7 +86,7 @@ function draw() {
         pac.position.x = 45;
         pac.position.y = 75;
       }*/ 
-     }
+     
      
 
     
