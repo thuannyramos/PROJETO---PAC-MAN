@@ -1,5 +1,4 @@
 function iniciarJogo(){
-    alert("Entrei");
     background(0);
     
     creatPac();
