@@ -102,6 +102,4 @@ function cenarioCriar(fase){
   ['b', 'b', 'b', 'b', 'b', 'v', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'v', 'b', 'b', 'b', 'b', 'b']
   ];
 	}
-		
-	return  cenario;
 }

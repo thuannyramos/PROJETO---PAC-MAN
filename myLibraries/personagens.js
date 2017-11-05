@@ -31,12 +31,13 @@ function creatPac(){
 			pac.position.x = 40;
 			pac.mirrorX(-1);
 			inScreen = true;
-	}	}
+	}	
+}
 	
 	colisaoComida(pac.position.x, pac.position.y);
   }
   
-  if(pac.position.x < 0 || pac.position.x > w || pac.position.y < 0 || pac.position.y > h) {
+  if(pac.position.x < 0 || pac.position.x > w || pac.position.y < 45 || pac.position.y > h - 30) {
 		inScreen = false;
   }
   
@@ -53,8 +54,8 @@ function creatPac(){
 		}
     
       else{
-			pac.position.y = h - 40;
-			pac.mirrorY(-1);
+			pac.position.y = h - 30;
+			pac.mirrorY(1);
 		 	inScreen = true;
 		}
 	}		
@@ -71,13 +72,14 @@ function creatPac(){
 			pac.mirrorY(-1);
 		}
     
-       else{
-		 pac.position.y = 40;
-		 pac.mirrorY(-1);
+		else
+		{
+		 pac.position.y = 70;
+		 pac.mirrorY(1);
 		 inScreen= true;
 		}
-	  }
 	}
+}
 	colisaoComida(pac.position.x, pac.position.y);
  //else pac.changeAnimation("stopped");
 
