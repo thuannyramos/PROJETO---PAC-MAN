@@ -30,16 +30,20 @@ function iniciarJogo(){
     for(i = 0; i < 4; i++) 
 		image(fantasma[i], posicaoFantasma[i][0], posicaoFantasma[i][1], 30, 30);
     
-   
-      colidiu(pac.position.x, pac.position.y,posicaoFantasma);
+    colidiu(pac.position.x, pac.position.y,posicaoFantasma);
 
     cabecalho();
   }
     
-     function cabecalho(){
-      textSize (20);
-      fill (225);
-      text ("Score: " + contadorPonto, 20, 25);
-      text ("Vidas: " + contadorVida, 430, 25);
-      text ("Level: " + contadorNivel, 780, 25); 
-     }
+function cabecalho(){
+  textSize (15);
+  fill (255,255,255);
+  textFont(myFont);
+  text ("Level: " + contadorNivel, 20, 25); 
+  text ("Score: " + contadorPonto, 751, 25);
+
+  imageMode(CENTER); 
+  for( i = 0; i < contadorVida; i ++){
+    image(coracao, 375 + i*50, 15, 20, 20);
+    }
+}

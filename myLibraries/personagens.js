@@ -7,7 +7,7 @@ if (keyIsDown(LEFT_ARROW)){
 	if (!(colisao (pac.position.x-2-bloco/2, pac.position.y - 10) || colisao (pac.position.x-2-bloco/2, pac.position.y + 10))) {
 	  if(inScreen)
 		{
-		pac.position.x  -= 2;
+		pac.position.x  -= velPac;
 		pac.mirrorX(-1);
 	  }
 	  else {
@@ -22,8 +22,7 @@ if (keyIsDown(LEFT_ARROW)){
 	pac.changeAnimation("movingH");
 	if (!(colisao(pac.position.x+0+bloco/2, pac.position.y - 10) || colisao(pac.position.x+0+bloco/2, pac.position.y + 10))) {
 		if(inScreen){
-
-			pac.position.x +=2;
+			pac.position.x +=velPac;
 			pac.mirrorX(1);
 		}
 		else {
@@ -44,7 +43,7 @@ if (keyIsDown(UP_ARROW)){
 	pac.changeAnimation("movingV");
 	if (!( colisao(pac.position.x - 10 , pac.position.y-1-bloco/2) || colisao(pac.position.x + 10 , pac.position.y-1-bloco/2) )) {
       if(inScreen){
-			pac.position.y -= 2;
+			pac.position.y -= velPac;
 			pac.mirrorY(1);
 		}
       else{
@@ -58,9 +57,8 @@ if (keyIsDown(UP_ARROW)){
 if (keyIsDown(DOWN_ARROW)){
 	pac.changeAnimation("movingV");
 	if (!(colisao(pac.position.x - 10, pac.position.y+0+bloco/2) || colisao(pac.position.x + 10, pac.position.y+0+bloco/2))) {
-		if(inScreen)
-		{
-			pac.position.y += 2;
+		if(inScreen){
+			pac.position.y += velPac;
 			pac.mirrorY(-1);
 		}
 		else
@@ -83,7 +81,7 @@ function movFantasma(pF){
 			if( j === 0) {
 				if ( pF[i][2] === esquerda ){
 					if(!(colisaoFantasma(pF[i][0]-bloco/2, pF[i][1]-bloco/2)))
-						pF[i][0] -= 2;
+						pF[i][0] -= velFant;
 					else {
 						pF[i][2] = posFantAleatoria();
 
@@ -92,7 +90,7 @@ function movFantasma(pF){
 
 				if ( pF[i][2] === direita ){
 					if(!(colisaoFantasma(pF[i][0] + bloco/2, pF[i][1])))
-						pF[i][0] += 2;
+						pF[i][0] += velFant;
 					else {
 						pF[i][2] = posFantAleatoria();
 					}
@@ -103,7 +101,7 @@ function movFantasma(pF){
 			if (j === 1) {
 				if ( pF[i][2] === cima ){
 					if(!(colisaoFantasma(pF[i][0], pF[i][1] - bloco/2)))
-						pF[i][1] -= 2;
+						pF[i][1] -= velFant;
 					else {
 						pF[i][2] = posFantAleatoria();
 					}
@@ -111,7 +109,7 @@ function movFantasma(pF){
 
 				if ( pF[i][2] === baixo )  {
 					if(!(colisaoFantasma(pF[i][0], pF[i][1] + bloco/2)))
-						pF[i][1] += 2;
+						pF[i][1] += velFant;
 					else {
 						pF[i][2] = posFantAleatoria();
 					}
@@ -162,7 +160,11 @@ function colisaoComida (cx, cy){
 		}
 		if (cenario [colLinha][colColuna] == 'k') {
 			cenario [colLinha][colColuna] = 'x';
-			contadorPonto +=10;
+			velPac = 4;
+			var tempo = millis() + 6000;
+			if(millis() === tempo){
+				velPac = 2;
+			}
 		}
 }
 
@@ -184,9 +186,16 @@ function colidiu(x, y, pF){
 	 for( i = 0; i < 4; i++){
 	 if( dist(x, y, pF[i][0], pF[i][1]) < 30) {
 		 contadorVida--;
-		 pac.position.x = 45;
-		 pac.position.y = 75;
+		 pac.changeAnimation("morte");
+		 pac.mirrorY(1);
+			if(contadorVida === 0) 
+			 	estado = 2;
+		 	else{
+		 		pac.position.x = 45;
+				pac.position.y = 75;
+				posicaoFantasma = [[(w/2) - 40, (h/2) - 15, direita], [(w/2) + 10, (h/2) - 15, esquerda], [(w/2) - 40, (h/2) + 25, direita], [ (w/2) + 10, (h/2) + 25, esquerda]];
+		        //pac.changeAnimation("stopped");
+			}
 		}
-	 if(contadorVida === 0) estado = 3;
 	}
 }
