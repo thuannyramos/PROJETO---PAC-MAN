@@ -8,7 +8,7 @@ function iniciarJogo(){
   
     posicaoFantasma = movFantasma(posicaoFantasma);
   
-    for(i = 0; i < 4; i++) image(fantasma[i], posicaoFantasma[i][0], posicaoFantasma[i][1], 35, 35);
+    
     
     // matriz do cenário
     for (i = 0; i < cenario.length; i++) {
@@ -26,6 +26,12 @@ function iniciarJogo(){
         }
       }
     }
+    
+    for(i = 0; i < 4; i++) 
+		image(fantasma[i], posicaoFantasma[i][0], posicaoFantasma[i][1], 30, 30);
+    
+   
+      colidiu(pac.position.x, pac.position.y,posicaoFantasma);
 
     cabecalho();
   }
@@ -35,5 +41,5 @@ function iniciarJogo(){
       fill (225);
       text ("Score: " + contadorPonto, 20, 25);
       text ("Vidas: " + contadorVida, 430, 25);
-      text ("Nível: " + contadorNivel, 780, 25); 
+      text ("Level: " + contadorNivel, 780, 25); 
      }
