@@ -7,7 +7,7 @@ var contadorVida = 4;
 var contadorPonto = 0;
 var cima = 0; var baixo  = 1; var direita = 2; var esquerda = 3;
 var cenario = [];
-var estado = 2;
+var estado = 0;
 var myFont; 
 var logo; 
 var coracao;
