@@ -13,6 +13,7 @@ var logo;
 var coracao;
 var velPac = 2;
 var velFant = 2.75;
+var bateu = false;
 
 
 posicaoFantasma = [[(w/2) - 40, (h/2) - 15, direita], [(w/2) + 10, (h/2) - 15, esquerda], [(w/2) - 40, (h/2) + 25, direita], [ (w/2) + 10, (h/2) + 25, esquerda]];
