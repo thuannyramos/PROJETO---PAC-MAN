@@ -7,7 +7,7 @@ var contadorVida = 4;
 var contadorPonto = 0;
 var cima = 0; var baixo  = 1; var direita = 2; var esquerda = 3;
 var cenario = [];
-var estado = 2;
+var estado = 0;
 var myFont; 
 var logo; 
 var coracao;
@@ -45,9 +45,27 @@ function draw() {
   if(estado === 1) iniciarJogo();
   if(estado === 2) gameOver();
   if(estado === 3) instrucoes();
+
+  cont = 1;
+
+  for (i = 0; i < cenario.length; i++) {
+      for (j = 0; j < cenario[0].length; j++) {
+		  if (cenario[i][j] == 'v'){
+			  cont++;
+		  }
+	  }
+	  if (i == 901 && cont !== 1){
+		  i === 0;
+		  j === 0;
+	  }
   }
-
-
+  if (cont == 1){
+	  contadorNivel++;
+	  cenarioCriar (contadorNivel);
+	  pac.position.x = 45;
+	  pac.position.y = 75;
+  }
+}
 /*
      function life(){
       if (contadorNivel == 1) { //2350
