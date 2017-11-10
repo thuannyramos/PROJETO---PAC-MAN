@@ -1,11 +1,13 @@
+tempo = 0;
+
 function creatPac(){
 
 //Movimentação lateral - Pac
 
 if (keyIsDown(LEFT_ARROW)){
-	if(!bateu){
-	pac.changeAnimation("movingH");
-}
+	if(!bateu)
+		pac.changeAnimation("movingH");
+
 	if (!(colisao (pac.position.x-2-bloco/2, pac.position.y - 10) || colisao (pac.position.x-2-bloco/2, pac.position.y + 10))) {
 	  if(inScreen)
 		{
@@ -21,7 +23,8 @@ if (keyIsDown(LEFT_ARROW)){
 }
 
  if (keyIsDown(RIGHT_ARROW)){
-	pac.changeAnimation("movingH");
+	if(!bateu)
+		pac.changeAnimation("movingH");
 	if (!(colisao(pac.position.x+0+bloco/2, pac.position.y - 10) || colisao(pac.position.x+0+bloco/2, pac.position.y + 10))) {
 		if(inScreen){
 			pac.position.x +=velPac;
@@ -42,7 +45,8 @@ if(pac.position.x < 0 || pac.position.x > w || pac.position.y < 45 || pac.positi
 //Movimentação vertical - Pac
 
 if (keyIsDown(UP_ARROW)){
-	pac.changeAnimation("movingV");
+	if(!bateu)
+		pac.changeAnimation("movingV");
 	if (!( colisao(pac.position.x - 10 , pac.position.y-1-bloco/2) || colisao(pac.position.x + 10 , pac.position.y-1-bloco/2) )) {
       if(inScreen){
 			pac.position.y -= velPac;
@@ -57,7 +61,8 @@ if (keyIsDown(UP_ARROW)){
 }
 
 if (keyIsDown(DOWN_ARROW)){
-	pac.changeAnimation("movingV");
+	if(!bateu)
+		pac.changeAnimation("movingV");
 	if (!(colisao(pac.position.x - 10, pac.position.y+0+bloco/2) || colisao(pac.position.x + 10, pac.position.y+0+bloco/2))) {
 		if(inScreen){
 			pac.position.y += velPac;
@@ -67,7 +72,7 @@ if (keyIsDown(DOWN_ARROW)){
 		{
 			pac.position.y = 70;
 		 	pac.mirrorY(1);
-			inScreen= true;
+			inScreen = true;
 		}
 	}
 }
@@ -156,18 +161,26 @@ function colisaoComida (cx, cy){
 	colColuna = Math.floor (cx/bloco);
 	colLinha = Math.floor (cy/bloco);
 	
-		if (cenario [colLinha][colColuna] == 'v') {
+	    //Comida ponto
+		if (cenario [colLinha][colColuna] === 'v') {
 			cenario [colLinha][colColuna] = 'x';
-	 		contadorPonto +=10;
+			contadorPonto +=10;
+			passarFase();
 		}
-		if (cenario [colLinha][colColuna] == 'k') {
+
+		//Comida Velocidade
+		if (cenario [colLinha][colColuna] === 'k') {
 			cenario [colLinha][colColuna] = 'x';
-			velPac = 4;
-			var tempo = millis() + 6000;
-			if(millis() === tempo){
-				velPac = 2;
-			}
+			tempo = millis() + 6000;			
 		}
+
+		//Super - Velocidade do Pac
+		if(parseInt(tempo) > parseInt(millis()))
+			velPac = 4 + (contadorNivel - 1) * 0.5;
+		else
+			velPac = 2;	
+
+		
 }
 
 //Colisão Fantasma-cenário
@@ -182,6 +195,7 @@ function colisaoFantasma(cx, cy){
 	  return false;
   	}
 }
+
 //Colisão pac-Fantasma
 function colidiu(x, y, pF){
 	 for( i = 0; i < 4; i++){
@@ -194,22 +208,22 @@ function colidiu(x, y, pF){
 			bateu  = true; 
 			if(contadorVida === 0){
 				estado = 2;
-			}else{	
-				
+			}
+			else{	
 				setTimeout(reStart, 500);
 			}
 		}
 	}
 }
 
+//Reinicio da fase depois que perde uma vida
 function reStart() {
 	pac.position.x = 45;
 	pac.position.y = 75;
-	velFant = 2.75;
+	pac.mirrorX(1);
+	velFant = 2.75 + (contadorNivel - 1) * 0.5;
 	posicaoFantasma = [[(w/2) - 40, (h/2) - 15, direita], [(w/2) + 10, (h/2) - 15, esquerda], [(w/2) - 40, (h/2) + 25, direita], [ (w/2) + 10, (h/2) + 25, esquerda]];
 	pac.changeAnimation("stopped");
 	bateu = false;
 	velPac  = 2	;
-	
-
 }

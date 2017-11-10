@@ -11,12 +11,12 @@ var estado = 0;
 var myFont; 
 var logo; 
 var coracao;
-var velPac = 2;
+var velPac = 5;
 var velFant = 2.75;
 var bateu = false;
 
 
-posicaoFantasma = [[(w/2) - 40, (h/2) - 15, direita], [(w/2) + 10, (h/2) - 15, esquerda], [(w/2) - 40, (h/2) + 25, direita], [ (w/2) + 10, (h/2) + 25, esquerda]];
+//posicaoFantasma = [[(w/2) - 40, (h/2) - 15, direita], [(w/2) + 10, (h/2) - 15, esquerda], [(w/2) - 40, (h/2) + 25, direita], [ (w/2) + 10, (h/2) + 25, esquerda]];
 
 
 function preload() {
@@ -31,7 +31,6 @@ function preload() {
 
 function setup() {
   createCanvas(w, h);
-  frameRate(60);
   background(0);
   pac = createSprite(45, 75, 10 , 10);
   pac.scale = 1.5;
@@ -46,68 +45,4 @@ function draw() {
   if(estado === 1) iniciarJogo();
   if(estado === 2) gameOver();
   if(estado === 3) instrucoes();
-
-  cont = 1;
-
-  for (i = 0; i < cenario.length; i++) {
-      for (j = 0; j < cenario[0].length; j++) {
-		  if (cenario[i][j] == 'v'){
-			  cont++;
-		  }
-	  }
-	  if (i == 901 && cont !== 1){
-		  i === 0;
-		  j === 0;
-	  }
-  }
-  if (cont == 1){
-	  contadorNivel++;
-	  cenarioCriar (contadorNivel);
-	  pac.position.x = 45;
-	  pac.position.y = 75;
-  }
 }
-/*
-     function life(){
-      if (contadorNivel == 1) { //2350
-        if (contadorPonto == 50) {
-         contadorNivel++;
-         cenario = cenarioCriar(contadorNivel);
-       iniciarJogo();
-        }
-      }
-
-      if (contadorNivel == 2)	{
-        if (contadorPonto == 4660) {
-         contadorNivel++;
-         cenario = cenarioCriar(contadorNivel);
-         pac.position.x = 45;
-         pac.position.y = 75;
-        }
-      }
-
-      if (contadorNivel == 3)	{
-        if (contadorPonto == 6980) {
-         contadorNivel++;
-         cenario = cenarioCriar(contadorNivel);
-         pac.position.x = 45;
-         pac.position.y = 75;
-        }
-      }
-
-      if (contadorNivel == 4)	{
-        if (contadorPonto == 9250) {
-          contadorNivel++;
-          cenario = cenarioCriar(contadorNivel);
-          pac.position.x = 45;
-          pac.position.y = 75;
-        }
-      }
-
-      /*if (contadorNivel == 5)
-      if (contadorPonto == 11540) {
-        contadorNivel++;
-        cenario = cenarioCriar(contadorNivel);
-        pac.position.x = 45;
-        pac.position.y = 75;
-      }*/
