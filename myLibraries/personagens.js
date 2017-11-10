@@ -3,7 +3,9 @@ function creatPac(){
 //Movimentação lateral - Pac
 
 if (keyIsDown(LEFT_ARROW)){
+	if(!bateu){
 	pac.changeAnimation("movingH");
+}
 	if (!(colisao (pac.position.x-2-bloco/2, pac.position.y - 10) || colisao (pac.position.x-2-bloco/2, pac.position.y + 10))) {
 	  if(inScreen)
 		{
@@ -180,22 +182,34 @@ function colisaoFantasma(cx, cy){
 	  return false;
   	}
 }
-
 //Colisão pac-Fantasma
 function colidiu(x, y, pF){
 	 for( i = 0; i < 4; i++){
-	 if( dist(x, y, pF[i][0], pF[i][1]) < 30) {
-		 contadorVida--;
-		 pac.changeAnimation("morte");
-		 pac.mirrorY(1);
-			if(contadorVida === 0) 
-			 	estado = 2;
-		 	else{
-		 		pac.position.x = 45;
-				pac.position.y = 75;
-				posicaoFantasma = [[(w/2) - 40, (h/2) - 15, direita], [(w/2) + 10, (h/2) - 15, esquerda], [(w/2) - 40, (h/2) + 25, direita], [ (w/2) + 10, (h/2) + 25, esquerda]];
-		        //pac.changeAnimation("stopped");
+		if( dist(x, y, pF[i][0], pF[i][1]) < 30 && !bateu){
+			contadorVida--;
+			pac.changeAnimation("morte");
+			pac.mirrorY(1);
+			velFant = 0;
+			velPac  = 0;
+			bateu  = true; 
+			if(contadorVida === 0){
+				estado = 2;
+			}else{	
+				
+				setTimeout(reStart, 500);
 			}
 		}
 	}
+}
+
+function reStart() {
+	pac.position.x = 45;
+	pac.position.y = 75;
+	velFant = 2.75;
+	posicaoFantasma = [[(w/2) - 40, (h/2) - 15, direita], [(w/2) + 10, (h/2) - 15, esquerda], [(w/2) - 40, (h/2) + 25, direita], [ (w/2) + 10, (h/2) + 25, esquerda]];
+	pac.changeAnimation("stopped");
+	bateu = false;
+	velPac  = 2	;
+	
+
 }

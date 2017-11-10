@@ -14,5 +14,4 @@ function gameOver(){
 	//stroke(255,255,255;
 	rect(w/4 - 130, h/4 + 220, 150, 50);
 
-
-	}
+}

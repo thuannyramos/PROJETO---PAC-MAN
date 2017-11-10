@@ -13,6 +13,7 @@ var logo;
 var coracao;
 var velPac = 2;
 var velFant = 2.75;
+var bateu = false;
 
 
 posicaoFantasma = [[(w/2) - 40, (h/2) - 15, direita], [(w/2) + 10, (h/2) - 15, esquerda], [(w/2) - 40, (h/2) + 25, direita], [ (w/2) + 10, (h/2) + 25, esquerda]];
@@ -45,9 +46,27 @@ function draw() {
   if(estado === 1) iniciarJogo();
   if(estado === 2) gameOver();
   if(estado === 3) instrucoes();
+
+  cont = 1;
+
+  for (i = 0; i < cenario.length; i++) {
+      for (j = 0; j < cenario[0].length; j++) {
+		  if (cenario[i][j] == 'v'){
+			  cont++;
+		  }
+	  }
+	  if (i == 901 && cont !== 1){
+		  i === 0;
+		  j === 0;
+	  }
   }
-
-
+  if (cont == 1){
+	  contadorNivel++;
+	  cenarioCriar (contadorNivel);
+	  pac.position.x = 45;
+	  pac.position.y = 75;
+  }
+}
 /*
      function life(){
       if (contadorNivel == 1) { //2350
