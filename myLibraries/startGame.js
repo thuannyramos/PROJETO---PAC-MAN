@@ -1,18 +1,17 @@
 function iniciarJogo(){
     background(0);
-    
     creatPac();
     drawSprites();
     
     imageMode(CENTER); 
   
-    //posicaoFantasma = movFantasma(posicaoFantasma);
+    posicaoFantasma = movFantasma(posicaoFantasma);
   
     // matriz do cenário
     for (i = 0; i < cenario.length; i++) {
       for (j = 0; j < cenario[0].length; j++) {
         if (cenario[i][j] === 'b') {
-        fill (100, 100, 225); 
+        fill(corR,corG,corB); 
         rect (j*bloco, i*bloco, bloco, bloco);
         }
         else if(i>=1 && i<16 && cenario[i][j] === 'v') {
@@ -25,12 +24,12 @@ function iniciarJogo(){
       }
     }
     
-    //for(i = 0; i < 4; i++) 
-		//image(fantasma[i], posicaoFantasma[i][0], posicaoFantasma[i][1], 30, 30);
+    for(i = 0; i < 4; i++) 
+		image(fantasma[i], posicaoFantasma[i][0], posicaoFantasma[i][1], 30, 30);
     
-    //colidiu(pac.position.x, pac.position.y,posicaoFantasma);
+    colidiu(pac.position.x, pac.position.y,posicaoFantasma);
 
-    cabecalho();
+   cabecalho();
 
   }
     
@@ -48,20 +47,18 @@ function cabecalho(){
 }
 
 function passarFase(){
-  cont = 1;
+  cont= 0;
   
     for (i = 0; i < cenario.length; i++) {
         for (j = 0; j < cenario[0].length; j++) {
         if (cenario[i][j] === 'v'){
           cont++;
-          console.log(cont);
         }
     }
   }
-    if (cont === 1){
-      alert("Entrei");
+    if (cont === 0){
       contadorNivel++;
-      cenarioCriar (contadorNivel);
+      cenarioCriar(contadorNivel);
       pac.position.x = 45;
       pac.position.y = 75;
     }

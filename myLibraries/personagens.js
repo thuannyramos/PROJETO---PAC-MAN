@@ -9,8 +9,7 @@ if (keyIsDown(LEFT_ARROW)){
 		pac.changeAnimation("movingH");
 
 	if (!(colisao (pac.position.x-2-bloco/2, pac.position.y - 10) || colisao (pac.position.x-2-bloco/2, pac.position.y + 10))) {
-	  if(inScreen)
-		{
+	  if(inScreen) {
 		pac.position.x  -= velPac;
 		pac.mirrorX(-1);
 	  }
@@ -51,12 +50,12 @@ if (keyIsDown(UP_ARROW)){
       if(inScreen){
 			pac.position.y -= velPac;
 			pac.mirrorY(1);
-		}
+	  }
       else{
 			pac.position.y = h - 30;
 			pac.mirrorY(1);
 		 	inScreen = true;
-		}
+	  }
 	}
 }
 
@@ -68,8 +67,7 @@ if (keyIsDown(DOWN_ARROW)){
 			pac.position.y += velPac;
 			pac.mirrorY(-1);
 		}
-		else
-		{
+		else {
 			pac.position.y = 70;
 		 	pac.mirrorY(1);
 			inScreen = true;
@@ -79,6 +77,7 @@ if (keyIsDown(DOWN_ARROW)){
 	colisaoComida(pac.position.x, pac.position.y);
 }
 
+
 // movimentação dos fantasmas
 function movFantasma(pF){
 	for(i = 0; i < 4; i++){
@@ -87,46 +86,69 @@ function movFantasma(pF){
 			// posicao x
 			if( j === 0) {
 				if ( pF[i][2] === esquerda ){
-					if(!(colisaoFantasma(pF[i][0]-bloco/2, pF[i][1]-bloco/2)))
-						pF[i][0] -= velFant;
+					if(fatNaTela){
+						if(!(colisaoFantasma(pF[i][0]-bloco/2, pF[i][1]-bloco/2)))
+							pF[i][0] -= velFant;
+						else 
+							pF[i][2] = posFantAleatoria();
+					}
 					else {
-						pF[i][2] = posFantAleatoria();
-
+						pF[i][0] = w - 40;
+						fatNaTela = true;
 					}
 				}
-
+  
 				if ( pF[i][2] === direita ){
-					if(!(colisaoFantasma(pF[i][0] + bloco/2, pF[i][1])))
-						pF[i][0] += velFant;
-					else {
-						pF[i][2] = posFantAleatoria();
+					if(fatNaTela){
+						if(!(colisaoFantasma(pF[i][0] + bloco/2, pF[i][1])))
+							pF[i][0] += velFant;
+						else 
+							pF[i][2] = posFantAleatoria();
 					}
-				}
-			}	
+					else {
+						pF[i][0] = 40;
+						fatNaTela = true;
+					}
+				}	
+		}
+
+if(pF[i][0] < 0 || pF[i][0] > w || pF[i][1] < 45 || pF[i][1] > h - 30) 
+	fatNaTela = false;
 
 		   // posicao y
 			if (j === 1) {
 				if ( pF[i][2] === cima ){
-					if(!(colisaoFantasma(pF[i][0], pF[i][1] - bloco/2)))
-						pF[i][1] -= velFant;
+					if(fatNaTela){
+						if(!(colisaoFantasma(pF[i][0], pF[i][1] - bloco/2)))
+							pF[i][1] -= velFant;
+						else 
+							pF[i][2] = posFantAleatoria();
+					}
 					else {
-						pF[i][2] = posFantAleatoria();
+						pF[i][1] = h - 30;
+						fatNaTela = true;
 					}
 				}
 
 				if ( pF[i][2] === baixo )  {
-					if(!(colisaoFantasma(pF[i][0], pF[i][1] + bloco/2)))
-						pF[i][1] += velFant;
+					if(fatNaTela){
+						if(!(colisaoFantasma(pF[i][0], pF[i][1] + bloco/2)))
+							pF[i][1] += velFant;
+						else 
+							pF[i][2] = posFantAleatoria();
+					}
 					else {
-						pF[i][2] = posFantAleatoria();
+						pF[i][1] = 50;
+						fatNaTela = true;
 					}
 				}
 			}
-
+			
 		}
 	}
 		return pF;
 }
+
 
 //Posição aleátoria do fantasma
 function posFantAleatoria(){

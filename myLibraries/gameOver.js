@@ -11,7 +11,7 @@ function gameOver(){
 	text ("SCORE: " + contadorPonto, w/4 + 30, h/4 + 120);
 
 	nofill();
-	//stroke(255,255,255;
+	//stroke(255,255,255);
 	rect(w/4 - 130, h/4 + 220, 150, 50);
 
 }

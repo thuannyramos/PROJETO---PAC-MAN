@@ -1,4 +1,5 @@
 var inScreen = true;
+var fatNaTela = true;
 var w = 901;
 var h = 481;
 var bloco = 30;
@@ -7,6 +8,7 @@ var contadorVida = 4;
 var contadorPonto = 0;
 var cima = 0; var baixo  = 1; var direita = 2; var esquerda = 3;
 var cenario = [];
+var corR, corG, corB;
 var estado = 0;
 var myFont; 
 var logo; 
@@ -16,7 +18,7 @@ var velFant = 2.75;
 var bateu = false;
 
 
-//posicaoFantasma = [[(w/2) - 40, (h/2) - 15, direita], [(w/2) + 10, (h/2) - 15, esquerda], [(w/2) - 40, (h/2) + 25, direita], [ (w/2) + 10, (h/2) + 25, esquerda]];
+posicaoFantasma = [[(w/2) - 30, (h/2) + 16 , direita], [(w/2) + 5, (h/2) + 16, esquerda], [(w/2) - 30, (h/2) + 45, direita], [ (w/2) + 5, (h/2) + 45, esquerda]];
 
 
 function preload() {
@@ -27,6 +29,11 @@ function preload() {
   cenarioCriar(contadorNivel);
   logo = loadImage("imagens/Pac-Man_logo.png");
   coracao = loadImage("imagens/game-life.gif");
+  fantasmas = loadImage("imagens/fantasmas.png");
+  trofeu = loadImage("imagens/trofeu.png");
+  seta = [];
+  for (i = 0; i < 4; i++)
+  seta[i] = loadImage ("imagens/seta0" + i + ".png");
 }
 
 function setup() {
@@ -45,4 +52,5 @@ function draw() {
   if(estado === 1) iniciarJogo();
   if(estado === 2) gameOver();
   if(estado === 3) instrucoes();
+  if(estado === 4) win();
 }
