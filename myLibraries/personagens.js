@@ -1,7 +1,6 @@
 function creatPac(){
 	if(!bateu){
 	pac.changeAnimation("stopped");
-
 //Movimentação lateral - Pac
 
 if (keyIsDown(LEFT_ARROW)){
@@ -226,7 +225,7 @@ function colidiu(x, y, pF){
 			velPac  = 0;
 			bateu  = true; 
 			if(contadorVida === 0){
-				setTimeout(gameOver, 700);
+				setTimeout(gameOver, 500);
 			}
 			else{	
 				setTimeout(setInicio, 500);

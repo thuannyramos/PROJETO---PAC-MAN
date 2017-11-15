@@ -9,7 +9,7 @@ var contadorPonto = 0;
 var cima = 0; var baixo  = 1; var direita = 2; var esquerda = 3;
 var cenario = [];
 var corR, corG, corB;
-var estado = 1;
+var estado = 0;
 var myFont; 
 var logo; 
 var coracao;
@@ -49,8 +49,8 @@ function setup() {
 }
 
 setInicio();
+
 function draw() {
-  
   if(estado === 0) menu();
   if(estado === 1) iniciarJogo();
   if(estado === 2) gameOver();

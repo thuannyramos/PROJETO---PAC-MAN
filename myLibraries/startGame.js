@@ -60,10 +60,15 @@ function passarFase(){
     }
   }
     if (cont === 0){
+      if(contadorNivel === 5){
+        setTimeout(win, 500);
+      }
+      else{
       setTimeout(setInicio, 800);
       contadorNivel++;
+      }
       
-    }
+  }
 }
 
 

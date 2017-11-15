@@ -18,8 +18,8 @@ function instrucoes(){
     text ("Move para a esquerda", 100, 255);
 	text ("Move para baixo", 100, 315);
 	text ("Move para a direita", 100, 375);
-    text ("Ganha pontos. Passa de \n\n fase quando come todas.", 540, 180);
-    text ("Aumenta a velociade por \n\n 8s", 540, 275);
+    text ("Ganha 10 pontos. Passa de \n\n fase quando come todas.", 540, 180);
+    text ("Aumenta a velociade por \n\n 6s", 540, 275);
 	text ("Diminui as vidas", 540, 365);
 	
 

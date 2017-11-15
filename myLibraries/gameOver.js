@@ -30,8 +30,6 @@ function gameOver(){
 			contadorPonto = 0;
 			contadorVida = 4;
 			cenarioCriar(contadorNivel);
-			bateu = false;
-			velFant = 2.75 + (contadorNivel - 1) * 0.5;
 		}
 	}
 
