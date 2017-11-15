@@ -1,11 +1,12 @@
 tempo = 0;
 
 function creatPac(){
+	if(!bateu){
+	pac.changeAnimation("stopped");
 
 //Movimentação lateral - Pac
 
 if (keyIsDown(LEFT_ARROW)){
-	if(!bateu)
 		pac.changeAnimation("movingH");
 
 	if (!(colisao (pac.position.x-2-bloco/2, pac.position.y - 10) || colisao (pac.position.x-2-bloco/2, pac.position.y + 10))) {
@@ -22,7 +23,6 @@ if (keyIsDown(LEFT_ARROW)){
 }
 
  if (keyIsDown(RIGHT_ARROW)){
-	if(!bateu)
 		pac.changeAnimation("movingH");
 	if (!(colisao(pac.position.x+0+bloco/2, pac.position.y - 10) || colisao(pac.position.x+0+bloco/2, pac.position.y + 10))) {
 		if(inScreen){
@@ -44,7 +44,6 @@ if(pac.position.x < 0 || pac.position.x > w || pac.position.y < 45 || pac.positi
 //Movimentação vertical - Pac
 
 if (keyIsDown(UP_ARROW)){
-	if(!bateu)
 		pac.changeAnimation("movingV");
 	if (!( colisao(pac.position.x - 10 , pac.position.y-1-bloco/2) || colisao(pac.position.x + 10 , pac.position.y-1-bloco/2) )) {
       if(inScreen){
@@ -60,7 +59,6 @@ if (keyIsDown(UP_ARROW)){
 }
 
 if (keyIsDown(DOWN_ARROW)){
-	if(!bateu)
 		pac.changeAnimation("movingV");
 	if (!(colisao(pac.position.x - 10, pac.position.y+0+bloco/2) || colisao(pac.position.x + 10, pac.position.y+0+bloco/2))) {
 		if(inScreen){
@@ -75,6 +73,7 @@ if (keyIsDown(DOWN_ARROW)){
 	}
 }
 	colisaoComida(pac.position.x, pac.position.y);
+}
 }
 
 

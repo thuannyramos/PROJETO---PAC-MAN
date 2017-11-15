@@ -5,11 +5,11 @@ function gameOver(){
 	textSize (60);
     fill (225, 255,0);
 	textFont(myFont);
-	text ("GAME OVER :(", w/4 - 90, h/4 + 35);
+	text ("GAME OVER! :(", w/4 - 90, h/4 + 70);
 
 	textSize (45);
     fill (225, 255,0);
-	text ("SCORE: " + contadorPonto, w/4 + 30, h/4 + 120);
+	text ("SCORE: " + contadorPonto, w/4 + 30, h/4 + 170);
 
 	fill(255,255,255);
 	textSize (25);
