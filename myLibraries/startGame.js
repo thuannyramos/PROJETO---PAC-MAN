@@ -1,11 +1,8 @@
 function iniciarJogo(){
     background(0);
-    creatPac();
     drawSprites();
-    
+
     imageMode(CENTER); 
-  
-    posicaoFantasma = movFantasma(posicaoFantasma);
   
     // matriz do cenário
     for (i = 0; i < cenario.length; i++) {
@@ -23,13 +20,19 @@ function iniciarJogo(){
         }
       }
     }
-    
+
     for(i = 0; i < 4; i++) 
 		image(fantasma[i], posicaoFantasma[i][0], posicaoFantasma[i][1], 30, 30);
-    
-    colidiu(pac.position.x, pac.position.y,posicaoFantasma);
 
-   cabecalho();
+    if(iniciar){
+    posicaoFantasma = movFantasma(posicaoFantasma);
+    colidiu(pac.position.x, pac.position.y,posicaoFantasma);
+    creatPac();
+    }
+    if(keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW))
+      iniciar = true;
+
+    cabecalho();
 
   }
     
@@ -47,7 +50,7 @@ function cabecalho(){
 }
 
 function passarFase(){
-  cont= 0;
+  cont = 0;
   
     for (i = 0; i < cenario.length; i++) {
         for (j = 0; j < cenario[0].length; j++) {
@@ -57,9 +60,10 @@ function passarFase(){
     }
   }
     if (cont === 0){
+      setTimeout(setInicio, 800);
       contadorNivel++;
-      cenarioCriar(contadorNivel);
-      pac.position.x = 45;
-      pac.position.y = 75;
+      
     }
 }
+
+

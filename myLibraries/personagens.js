@@ -1,5 +1,3 @@
-tempo = 0;
-
 function creatPac(){
 	if(!bateu){
 	pac.changeAnimation("stopped");
@@ -73,7 +71,7 @@ if (keyIsDown(DOWN_ARROW)){
 	}
 }
 	colisaoComida(pac.position.x, pac.position.y);
-}
+	}
 }
 
 
@@ -228,23 +226,11 @@ function colidiu(x, y, pF){
 			velPac  = 0;
 			bateu  = true; 
 			if(contadorVida === 0){
-				estado = 2;
+				setTimeout(gameOver, 700);
 			}
 			else{	
-				setTimeout(reStart, 500);
+				setTimeout(setInicio, 500);
 			}
 		}
 	}
-}
-
-//Reinicio da fase depois que perde uma vida
-function reStart() {
-	pac.position.x = 45;
-	pac.position.y = 75;
-	pac.mirrorX(1);
-	velFant = 2.75 + (contadorNivel - 1) * 0.5;
-	posicaoFantasma = [[(w/2) - 40, (h/2) - 15, direita], [(w/2) + 10, (h/2) - 15, esquerda], [(w/2) - 40, (h/2) + 25, direita], [ (w/2) + 10, (h/2) + 25, esquerda]];
-	pac.changeAnimation("stopped");
-	bateu = false;
-	velPac  = 2	;
 }
