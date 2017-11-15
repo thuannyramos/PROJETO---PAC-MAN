@@ -60,14 +60,16 @@ function passarFase(){
     }
   }
     if (cont === 0){
+      velFant = 0;
+			velPac  = 0;
       if(contadorNivel === 5){
-        setTimeout(win, 500);
+        setTimeout(win, 200);
       }
       else{
-      setTimeout(setInicio, 800);
+      setInicio();
       contadorNivel++;
-      }
-      
+      cenarioCriar(contadorNivel);
+      } 
   }
 }
 

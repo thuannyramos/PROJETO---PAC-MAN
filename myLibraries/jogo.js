@@ -3,7 +3,7 @@ var fatNaTela = true;
 var w = 901;
 var h = 481;
 var bloco = 30;
-var contadorNivel = 1;
+var contadorNivel = 5;
 var contadorVida = 4;
 var contadorPonto = 0;
 var cima = 0; var baixo  = 1; var direita = 2; var esquerda = 3;
