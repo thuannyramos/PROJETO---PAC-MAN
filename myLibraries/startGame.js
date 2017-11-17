@@ -1,6 +1,7 @@
 function iniciarJogo(){
     background(0);
     drawSprites();
+    cursor(ARROW);
 
     imageMode(CENTER); 
   
