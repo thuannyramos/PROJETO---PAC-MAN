@@ -74,4 +74,10 @@ function passarFase(){
   }
 }
 
-
+function reiniciarJogo(){
+  setInicio();
+	contadorNivel = 1;
+	contadorPonto = 0;
+	contadorVida = 4;
+	cenarioCriar(contadorNivel);
+}

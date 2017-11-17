@@ -22,18 +22,13 @@ function win() {
 	textSize (25);
 	text ("MENU", 25, 445);
 
-	setInicio();
-	contadorNivel = 1;
-	contadorPonto = 0;
-	contadorVida = 4;
-	cenarioCriar(contadorNivel);
-
 	if ((mouseX >= 635 && mouseX <= 850 ) && (mouseY >= 400 && mouseY <= 450)){
 		fill(255,255,0);
 		text ("PLAY AGAIN", 650, 445);
 		cursor(HAND);
 		if (mouseIsPressed){
 			estado = 1;
+			reiniciarJogo()
 		}
 	}
 
@@ -43,6 +38,7 @@ function win() {
 		cursor(HAND);
 		if (mouseIsPressed)
 		estado = 0;
+		reiniciarJogo()
 	}
 
 }
