@@ -4,10 +4,9 @@ function creatPac(){
 //Movimentação lateral - Pac
 
 if (keyIsDown(LEFT_ARROW)){
-		pac.changeAnimation("movingH");
-
 	if (!(colisao (pac.position.x-2-bloco/2, pac.position.y - 10) || colisao (pac.position.x-2-bloco/2, pac.position.y + 10))) {
-	  if(inScreen) {
+		pac.changeAnimation("movingH");
+		if(inScreen) {
 		pac.position.x  -= velPac;
 		pac.mirrorX(-1);
 	  }
@@ -20,35 +19,35 @@ if (keyIsDown(LEFT_ARROW)){
 }
 
  if (keyIsDown(RIGHT_ARROW)){
-		pac.changeAnimation("movingH");
 	if (!(colisao(pac.position.x+0+bloco/2, pac.position.y - 10) || colisao(pac.position.x+0+bloco/2, pac.position.y + 10))) {
+		pac.changeAnimation("movingH");
 		if(inScreen){
 			pac.position.x +=velPac;
 			pac.mirrorX(1);
 		}
 		else {
-			pac.position.x = 40;
+			pac.position.x = 20;
 			pac.mirrorX(-1);
 			inScreen = true;
 		}
 	}
 }
 
-if(pac.position.x < 0 || pac.position.x > w || pac.position.y < 45 || pac.position.y > h - 30) 
+if(pac.position.x < 0 || pac.position.x > w || pac.position.y < 45 || pac.position.y > h - 20) 
 	inScreen = false;
   
 
 //Movimentação vertical - Pac
 
 if (keyIsDown(UP_ARROW)){
-		pac.changeAnimation("movingV");
 	if (!( colisao(pac.position.x - 10 , pac.position.y-1-bloco/2) || colisao(pac.position.x + 10 , pac.position.y-1-bloco/2) )) {
-      if(inScreen){
+		pac.changeAnimation("movingV");
+		if(inScreen){
 			pac.position.y -= velPac;
 			pac.mirrorY(1);
 	  }
       else{
-			pac.position.y = h - 30;
+			pac.position.y = h - 20;
 			pac.mirrorY(1);
 		 	inScreen = true;
 	  }
@@ -56,8 +55,8 @@ if (keyIsDown(UP_ARROW)){
 }
 
 if (keyIsDown(DOWN_ARROW)){
-		pac.changeAnimation("movingV");
 	if (!(colisao(pac.position.x - 10, pac.position.y+0+bloco/2) || colisao(pac.position.x + 10, pac.position.y+0+bloco/2))) {
+		pac.changeAnimation("movingV");
 		if(inScreen){
 			pac.position.y += velPac;
 			pac.mirrorY(-1);
@@ -102,13 +101,13 @@ function movFantasma(pF){
 							pF[i][2] = posFantAleatoria();
 					}
 					else {
-						pF[i][0] = 40;
+						pF[i][0] = 20;
 						fatNaTela = true;
 					}
 				}	
 		}
 
-if(pF[i][0] < 0 || pF[i][0] > w || pF[i][1] < 45 || pF[i][1] > h - 30) 
+if(pF[i][0] < 0 || pF[i][0] > w || pF[i][1] < 45 || pF[i][1] > h - 20) 
 	fatNaTela = false;
 
 		   // posicao y
@@ -121,7 +120,7 @@ if(pF[i][0] < 0 || pF[i][0] > w || pF[i][1] < 45 || pF[i][1] > h - 30)
 							pF[i][2] = posFantAleatoria();
 					}
 					else {
-						pF[i][1] = h - 30;
+						pF[i][1] = h - 20;
 						fatNaTela = true;
 					}
 				}

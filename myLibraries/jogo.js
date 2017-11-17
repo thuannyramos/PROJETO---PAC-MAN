@@ -9,7 +9,7 @@ var contadorPonto = 0;
 var cima = 0; var baixo  = 1; var direita = 2; var esquerda = 3;
 var cenario = [];
 var corR, corG, corB;
-var estado = 0;
+var estado = 4;
 var myFont; 
 var logo; 
 var coracao;
